@@ -1,0 +1,546 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="icon" href="favicon.ico" sizes="any" type="image/svg+xml">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+    <title>World Clock</title>
+	<link rel="stylesheet" href="clock.css"></link>
+	<!-- font-awesome -->
+	<script defer="" src="https://use.fontawesome.com/releases/v5.12.0/js/all.js" integrity="sha384-S+e0w/GqyDFzOU88KBBRbedIB4IMF55OzWmROqS6nlDcXlEaV8PcFi4DHZYfDk4Y" crossorigin="anonymous"></script>
+  
+  </head>
+  <body>
+	<header>
+			<nav class="navbar navbar-light bg-light px-5">
+				  <div class="container d-flex justify-content-center align-items-center">
+					  <div class=" text-center">
+						<a class="navbar-brand m-0" href="#">World Clock</a>
+						<a class="navbar-brand d-block m-0" href="#">
+						  <i class=""><svg class="bi bi-clock-history" width="2rem" height="2rem" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+							  <path fill-rule="evenodd" d="M8.515 1.019A7 7 0 0 0 8 1V0a8 8 0 0 1 .589.022l-.074.997zm2.004.45a7.003 7.003 0 0 0-.985-.299l.219-.976c.383.086.76.2 1.126.342l-.36.933zm1.37.71a7.01 7.01 0 0 0-.439-.27l.493-.87a8.025 8.025 0 0 1 .979.654l-.615.789a6.996 6.996 0 0 0-.418-.302zm1.834 1.79a6.99 6.99 0 0 0-.653-.796l.724-.69c.27.285.52.59.747.91l-.818.576zm.744 1.352a7.08 7.08 0 0 0-.214-.468l.893-.45a7.976 7.976 0 0 1 .45 1.088l-.95.313a7.023 7.023 0 0 0-.179-.483zm.53 2.507a6.991 6.991 0 0 0-.1-1.025l.985-.17c.067.386.106.778.116 1.17l-1 .025zm-.131 1.538c.033-.17.06-.339.081-.51l.993.123a7.957 7.957 0 0 1-.23 1.155l-.964-.267c.046-.165.086-.332.12-.501zm-.952 2.379c.184-.29.346-.594.486-.908l.914.405c-.16.36-.345.706-.555 1.038l-.845-.535zm-.964 1.205c.122-.122.239-.248.35-.378l.758.653a8.073 8.073 0 0 1-.401.432l-.707-.707z"/>
+							  <path fill-rule="evenodd" d="M8 1a7 7 0 1 0 4.95 11.95l.707.707A8.001 8.001 0 1 1 8 0v1z"/>
+							  <path fill-rule="evenodd" d="M7.5 3a.5.5 0 0 1 .5.5v5.21l3.248 1.856a.5.5 0 0 1-.496.868l-3.5-2A.5.5 0 0 1 7 9V3.5a.5.5 0 0 1 .5-.5z"/>
+							</svg>
+						  </i>
+						</a>
+					  </div>
+				  </div>
+			</nav>
+		</header>
+	<main class="my-4">
+		<section>
+			<div class="container">
+				<div class="jumbotron py-3 text-center my-2">
+				  <h1 class="display-4 font-weight-bold">Current Time In India</h1>
+				  <div class="d-flex justify-content-center align-items-center">
+					  <div class="my-3 pendulum">
+						<h1 class="" id="clock"></h1>
+					  </div>
+					 <!--- <div class="spinner-border" style="width: 13rem; height: 13rem;" role="status"> -->
+					 <!--- </div> -->
+				  </div>
+				  <hr class="my-3">
+				  <p>We are here to show you the time for different countries</p>
+				  
+				</div>
+			</div>
+		</section>
+		
+		<section>
+			<div class="container text-center mt-4">
+			<p>
+				<a class="btn btn-primary" data-toggle="collapse" href="#collapsecountries" role="button" aria-expanded="false" aria-controls="collapsecountries">
+					Browse Times
+				</a>
+			</p>
+				<div class="collapse" id="collapsecountries">
+				  <div class="accordion" id="accordion">
+					<div class="d-flex justify-content-end my-2">
+						
+						<!-- view buttons -->
+						
+						<button onclick="listViewsFunc()" id="list" class="btn btn-outline-primary"><i class="fas fa-list"></i></button>
+						<button onclick="gridViewsFunc()" id="grid" class="btn btn-outline-primary mx-2"><i class="fas fa-th"></i></button>
+						<button onclick="clockViewsFunc()" id="clock" class="btn btn-outline-primary">
+							<i><svg class="bi bi-clock-history" width="1.2rem" height="1.8rem" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+									<path fill-rule="evenodd" d="M8.515 1.019A7 7 0 0 0 8 1V0a8 8 0 0 1 .589.022l-.074.997zm2.004.45a7.003 7.003 0 0 0-.985-.299l.219-.976c.383.086.76.2 1.126.342l-.36.933zm1.37.71a7.01 7.01 0 0 0-.439-.27l.493-.87a8.025 8.025 0 0 1 .979.654l-.615.789a6.996 6.996 0 0 0-.418-.302zm1.834 1.79a6.99 6.99 0 0 0-.653-.796l.724-.69c.27.285.52.59.747.91l-.818.576zm.744 1.352a7.08 7.08 0 0 0-.214-.468l.893-.45a7.976 7.976 0 0 1 .45 1.088l-.95.313a7.023 7.023 0 0 0-.179-.483zm.53 2.507a6.991 6.991 0 0 0-.1-1.025l.985-.17c.067.386.106.778.116 1.17l-1 .025zm-.131 1.538c.033-.17.06-.339.081-.51l.993.123a7.957 7.957 0 0 1-.23 1.155l-.964-.267c.046-.165.086-.332.12-.501zm-.952 2.379c.184-.29.346-.594.486-.908l.914.405c-.16.36-.345.706-.555 1.038l-.845-.535zm-.964 1.205c.122-.122.239-.248.35-.378l.758.653a8.073 8.073 0 0 1-.401.432l-.707-.707z"/>
+									<path fill-rule="evenodd" d="M8 1a7 7 0 1 0 4.95 11.95l.707.707A8.001 8.001 0 1 1 8 0v1z"/>
+									<path fill-rule="evenodd" d="M7.5 3a.5.5 0 0 1 .5.5v5.21l3.248 1.856a.5.5 0 0 1-.496.868l-3.5-2A.5.5 0 0 1 7 9V3.5a.5.5 0 0 1 .5-.5z"/>
+								</svg>
+							</i>
+						</button>
+					</div>
+				
+				<!-- List View -->
+				
+				<div id="listView">
+					<div class="card">
+					  <div class="card-header" id="headingOne">
+						<h4 class="mb-0">
+						  <a class="btn btn-outline-primary btn-block font-weight-bold bg-white text-primary" data-toggle="collapse" data-parent="#accordion" href="#collapse1">
+						  Abu Dhabi, United Arab Emirates
+						  </a>
+						</h4>
+					  </div>
+					  <div id="collapse1"  class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+						<div class="card-body">
+						  <div class="jumbotron px-2 py-2 text-center mb-2">
+							<h1 class="font-weight-bold">Current Local Time in Abu Dhabi, United Arab Emirates</h1>
+							  <div class="d-flex justify-content-center align-items-center my-3">
+								<div class="d-flex justify-content-center align-items-center collapsePendulum">
+								  <h1 class="" id="abuDhabi"></h1>
+								</div>
+							  </div>
+							  <hr class="">
+							  <div class="d-flex justify-content-between align-items-center">
+							  <span class=""><b>Country:</b> United Arab Emirates</span>
+							  <span class=""><b>State:</b> Abu Dhabi</span>
+							  <span class=""><b>Lat/Long:</b>  24°28'N / 54°22'E</span>
+							  <span class=""><b>Currency:</b> Emirati dirham (AED)</span>
+							  <span class=""><b>Languages:</b> Arabic</span>
+							  <span class=""><b>Dial Codes:</b> +971</span>
+							  </div>
+						  </div>
+						</div>
+					  </div>
+					</div>
+					<div class="card">
+					  <div class="card-header" id="heading2">
+						<h4 class="mb-0">
+						  <a class="btn btn-outline-primary btn-block font-weight-bold bg-white text-primary" data-toggle="collapse" data-parent="#accordion" href="#collapse2">Berlin, Germany</a>
+						</h4>
+					  </div>
+					  <div id="collapse2"  class="collapse" aria-labelledby="heading2" data-parent="#accordion">
+						<div class="card-body">
+						<div class="jumbotron px-2 py-2 text-center mb-2">
+							<h1 class="font-weight-bold">Current Local Time in Berlin, Germany</h1>
+							  <div class="d-flex justify-content-center align-items-center my-3">
+								  <div class="d-flex justify-content-center align-items-center collapsePendulum">
+									<h1 class="" id="berlin"></h1>
+								  </div>
+							  </div>
+							  <hr class="">
+							  <div class="d-flex justify-content-between align-items-center">
+							  <span class="mx-2"><b>Country:</b> Germany</span>
+							  <span class="mx-2"><b>State:</b> Berlin (B)</span>
+							  <span class="mx-2"><b>Lat/Long:</b> 52°31'N / 13°23'E</span>
+							  <span class="mx-2"><b>Currency:</b> Euro (EUR)</span>
+							  <span class="mx-2"><b>Languages:</b> German</span>
+							  <span class="mx-2"><b>Dial Codes:</b> +49</span>
+							  </div>
+							</div>
+						</div>
+					  </div>
+					</div>
+					<div class="card">
+					  <div class="card-header" id="heading3">
+						<h4 class="mb-0">
+						  <a class="btn btn-outline-primary btn-block font-weight-bold bg-white text-primary" data-toggle="collapse" data-parent="#accordion" href="#collapse3">Istanbul, Turkey</a>
+						</h4>
+					  </div>
+					  <div id="collapse3"  class="collapse" aria-labelledby="heading3" data-parent="#accordion">
+						<div class="card-body">
+						<div class="jumbotron px-2 py-2 text-center mb-2">
+							<h1 class="font-weight-bold">Current Local Time in Istanbul, Turkey</h1>
+							  <div class="d-flex justify-content-center align-items-center my-3">
+								  <div class="d-flex justify-content-center align-items-center collapsePendulum">
+									<h1 class="" id="istanbul"></h1>
+								  </div>
+							  </div>
+							  <hr class="">
+							  <div class="d-flex justify-content-between align-items-center">
+							  <span class="mx-2"><b>Country:</b> Turkey</span>
+							  <span class="mx-2"><b>State:</b> Istanbul</span>
+							  <span class="mx-2"><b>Lat/Long:</b> 41°01'N / 28°58'E</span>
+							  <span class="mx-2"><b>Currency:</b> Turkish Lira (TRY)</span>
+							  <span class="mx-2"><b>Languages:</b> Turkish</span>
+							  <span class="mx-2"><b>Dial Codes:</b> +90</span>
+							  </div>
+							</div>
+						</div>
+					  </div>
+					</div>
+					<div class="card">
+					  <div class="card-header" id="heading4">
+						<h4 class="mb-0">
+						  <a class="btn btn-outline-primary btn-block font-weight-bold bg-white text-primary" data-toggle="collapse" data-parent="#accordion" href="#collapse4">
+						  Lahore, Pakistan</a>
+						</h4>
+					  </div>
+					  <div id="collapse4"  class="collapse" aria-labelledby="heading4" data-parent="#accordion">
+						<div class="card-body">
+						<div class="jumbotron px-2 py-2 text-center mb-2">
+							<h1 class="font-weight-bold">Current Local Time in Lahore, Pakistan</h1>
+							  <div class="d-flex justify-content-center align-items-center my-3">
+								  <div class="d-flex justify-content-center align-items-center collapsePendulum">
+									<h1 class="" id="lahore"></h1>
+								  </div>
+							  </div>
+							  <hr class="">
+							  <div class="d-flex justify-content-between align-items-center">
+							  <span class="mx-2"><b>Country:</b> Pakistan</span>
+							  <span class="mx-2"><b>City:</b> Lahore</span>
+							  <span class="mx-2"><b>Lat/Long:</b> 31°35'N / 74°18'E</span>
+							  <span class="mx-2"><b>Currency:</b> Pakistani Rupee (PKR)</span>
+							  <span class="mx-2"><b>Languages:</b> Urdu, English</span>
+							  <span class="mx-2"><b>Dial Codes:</b> +92</span>
+							  </div>
+							</div>
+						</div>
+					  </div>
+					</div>
+					<div class="card">
+					  <div class="card-header" id="heading5">
+						<h4 class="mb-0">
+						  <a class="btn btn-outline-primary btn-block font-weight-bold bg-white text-primary" data-toggle="collapse" data-parent="#accordion" href="#collapse5">
+						  London, England, United Kingdom</a>
+						</h4>
+					  </div>
+					  <div id="collapse5"  class="collapse" aria-labelledby="heading5" data-parent="#accordion">
+						<div class="card-body">
+						<div class="jumbotron px-2 py-2 text-center mb-2">
+							<h1 class="font-weight-bold">Current Local Time in London, England, United Kingdom</h1>
+							  <div class="d-flex justify-content-center align-items-center my-3">
+								  <div class="d-flex justify-content-center align-items-center collapsePendulum">
+									<h1 class="" id="london"></h1>
+								  </div>
+							  </div>
+							  <hr class="">
+							  <div class="d-flex justify-content-between align-items-center">
+							  <span class="mx-2"><b>Country:</b> United Kingdom</span>
+							  <span class="mx-2"><b>Constituent Country:</b> England (ENG)</span>
+							  <span class="mx-2"><b>Lat/Long:</b> 51°30'N / 0°08'W</span>
+							  <span class="mx-2"><b>Currency:</b> Pound Sterling (GBP)</span>
+							  <span class="mx-2"><b>Languages:</b> English</span>
+							  <span class="mx-2"><b>Dial Codes:</b> +44</span>
+							  </div>
+							</div>
+						</div>
+					  </div>
+					</div>
+					<div class="card">
+					  <div class="card-header" id="heading6">
+						<h4 class="mb-0">
+						  <a class="btn btn-outline-primary btn-block font-weight-bold bg-white text-primary" data-toggle="collapse" data-parent="#accordion" href="#collapse6">
+						  Reykjavik, Iceland</a>
+						</h4>
+					  </div>
+					  <div id="collapse6"  class="collapse" aria-labelledby="heading6" data-parent="#accordion">
+						<div class="card-body">
+						<div class="jumbotron px-2 py-2 text-center mb-2">
+							<h1 class="font-weight-bold">Current Local Time in Reykjavik, Iceland</h1>
+							  <div class="d-flex justify-content-center align-items-center my-3">
+								  <div class="d-flex justify-content-center align-items-center collapsePendulum">
+									<h1 class="" id="reykjavik"></h1>
+								  </div>
+							  </div>
+							  <hr class="">
+							  <div class="d-flex justify-content-between align-items-center">
+							  <span class="mx-2"><b>Country:</b> Iceland</span>
+							  <span class="mx-2"><b>Long Name:</b> Republic of Iceland</span>
+							  <span class="mx-2"><b>Abbreviations:</b> IS, ISL</span>
+							  <span class="mx-2"><b>Capital:</b> Reykjavik</span>
+							  <span class="mx-2"><b>Time Zones:</b> 1</span>
+							  <span class="mx-2"><b>Dial Codes:</b> +354</span>
+							  </div>
+							</div>
+						</div>
+					  </div>
+					</div>
+					<div class="card">
+					  <div class="card-header" id="heading7">
+						<h4 class="mb-0">
+						  <a class="btn btn-outline-primary btn-block font-weight-bold bg-white text-primary" data-toggle="collapse" data-parent="#accordion" href="#collapse7">
+						  Toronto, Canada</a>
+						</h4>
+					  </div>
+					  <div id="collapse7"  class="collapse" aria-labelledby="heading7" data-parent="#accordion">
+						<div class="card-body">
+						<div class="jumbotron px-2 py-2 text-center mb-2">
+							<h1 class="font-weight-bold">Current Local Time in Toronto, Canada</h1>
+							  <div class="d-flex justify-content-center align-items-center my-3">
+								  <div class="d-flex justify-content-center align-items-center collapsePendulum">
+									<h1 class="" id="toronto"></h1>
+								  </div>
+							  </div>
+							  <hr class="">
+							  <div class="d-flex justify-content-between align-items-center">
+							  <span class="mx-2"><b>Country:</b> Canada</span>
+							  <span class="mx-2"><b>Province:</b> Ontario (ON)</span>
+							  <span class="mx-2"><b>Lat/Long:</b> 43°39'N / 79°23'W</span>
+							  <span class="mx-2"><b>Currency:</b> Canadian Dollar (CAD)</span>
+							  <span class="mx-2"><b>Languages:</b> English, French</span>
+							  <span class="mx-2"><b>Dial Codes:</b> +1</span>
+							  </div>
+							</div>
+						</div>
+					  </div>
+					</div>
+					<div class="card">
+					  <div class="card-header" id="heading8">
+						<h4 class="mb-0">
+						  <a class="btn btn-outline-primary btn-block font-weight-bold bg-white text-primary" data-toggle="collapse" data-parent="#accordion" href="#collapse8">
+						  Vancouver, Canada</a>
+						</h4>
+					  </div>
+					  <div id="collapse8"  class="collapse" aria-labelledby="heading8" data-parent="#accordion">
+						<div class="card-body">
+						<div class="jumbotron px-2 py-2 text-center mb-2">
+							<h1 class="font-weight-bold">Current Local Time in Vancouver, Canada</h1>
+							  <div class="d-flex justify-content-center align-items-center my-3">
+								  <div class="d-flex justify-content-center align-items-center collapsePendulum">
+									<h1 class="" id="vancouver"></h1>
+								  </div>
+							  </div>
+							  <hr class="">
+							  <div class="d-flex justify-content-between align-items-center">
+							  <span class="mx-2"><b>Country:</b> Canada</span>
+							  <span class="mx-2"><b>Province:</b> British Columbia (BC)</span>
+							  <span class="mx-2"><b>Lat/Long:</b> 49°17'N / 123°07'W</span>
+							  <span class="mx-2"><b>Currency:</b> Canadian Dollar (CAD)</span>
+							  <span class="mx-2"><b>Languages:</b> English, French</span>
+							  <span class="mx-2"><b>Dial Codes:</b> +1</span>
+							  </div>
+							</div>
+						</div>
+					  </div>
+					</div>
+				</div>	
+					
+					
+				<!-- Grid View -->
+					
+					<div id="gridView">
+						<div class="d-flex align-items-center justify-content-around flex-wrap">
+							<div class="displayCard mt-4">
+								<div class="">
+									<h4 class="mt-4">Abu Dhabi, UAE</h4>
+								</div>
+								<div class="d-flex justify-content-center align-items-center my-3">
+									<div class="d-flex justify-content-center align-items-center secondBlink">
+										<h1 class="p-1" id="abuDhabiTime"></h1>
+									</div>
+								</div>
+							</div>
+							<div class="displayCard mt-4">
+								<div class="">
+									<h4 class="mt-4">Berlin, Germany</h4>
+								</div>
+								<div class="d-flex justify-content-center align-items-center my-3">
+									<div class="d-flex justify-content-center align-items-center secondBlink">
+										<h1 class="p-1" id="berlinTime"></h1>
+									</div>
+								</div>
+							</div>
+							<div class="displayCard mt-4 ">
+								<div class="">
+									<h4 class="mt-4">Istanbul, Turkey</h4>
+								</div>
+								<div class="d-flex justify-content-center align-items-center my-3">
+									<div class="d-flex justify-content-center align-items-center secondBlink">
+										<h1 class="p-1" id="istanbulTime"></h1>
+									</div>
+								</div>
+							</div>
+							<div class="displayCard mt-4 ">
+								<div class="">
+									<h4 class="mt-4">Lahore, Pakistan</h4>
+								</div>
+								<div class="d-flex justify-content-center align-items-center my-3">
+									<div class="d-flex justify-content-center align-items-center secondBlink">
+										<h1 class="p-1" id="lahoreTime"></h1>
+									</div>
+								</div>
+							</div>
+							<div class="displayCard mt-4 ">
+								<div class="">
+									<h4 class="mt-4">London, England</h4>
+								</div>
+								<div class="d-flex justify-content-center align-items-center my-3">
+									<div class="d-flex justify-content-center align-items-center secondBlink">
+										<h1 class="p-1" id="londonTime"></h1>
+									</div>
+								</div>
+							</div>
+							<div class="displayCard mt-4 ">
+								<div class="">
+									<h4 class="mt-4">Reykjavik, Iceland</h4>
+								</div>
+								<div class="d-flex justify-content-center align-items-center my-3">
+									<div class="d-flex justify-content-center align-items-center secondBlink">
+										<h1 class="p-1" id="reykjavikTime"></h1>
+									</div>
+								</div>
+							</div>
+							<div class="displayCard mt-4 ">
+								<div class="">
+									<h4 class="mt-4">Toronto, Canada</h4>
+								</div>
+								<div class="d-flex justify-content-center align-items-center my-3">
+									<div class="d-flex justify-content-center align-items-center secondBlink">
+										<h1 class="p-1" id="torontoTime"></h1>
+									</div>
+								</div>
+							</div>
+							<div class="displayCard mt-4 ">
+								<div class="">
+									<h4 class="mt-4">Vancouver, Canada</h4>
+								</div>
+								<div class="d-flex justify-content-center align-items-center my-3">
+									<div class="d-flex justify-content-center align-items-center secondBlink">
+										<h1 class="p-1" id="vancouverTime"></h1>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- Clock view -->
+
+					<div id="clockView">
+						<div class="d-flex align-items-center justify-content-around flex-wrap">
+	
+							<div class="mt-4 mx-2 displayCock" id="abuDhabi-clock">
+								<div class="text-center">
+									<h4 class="my-3">Abu Dhabi, UAE</h4>
+								</div>
+								<div class="clock">
+									<div class="clock-face">
+										<div class="hand hour-hand" id="hour-abuDhabi"></div>
+										<div class="hand min-hand" id="min-abuDhabi"></div>
+										<div class="hand sec-hand" id="second-abuDhabi"></div>
+									</div>
+								</div>
+							</div>
+	
+							<div class="mt-4 mx-2 displayCock" id="berlin-clock">
+								<div class="text-center">
+									<h4 class="my-3">Berlin, Germany</h4>
+								</div>
+								<div class="clock">
+									<div class="clock-face">
+										<div class="hand hour-hand" id="hour-berlin"></div>
+										<div class="hand min-hand" id="min-berlin"></div>
+										<div class="hand sec-hand" id="second-berlin"></div>
+									</div>
+								</div>
+							</div>
+	
+							<div class="mt-4 mx-2 displayCock" id="istanbul-clock">
+								<div class="text-center">
+									<h4 class="my-3">Istanbul, Turkey</h4>
+								</div>
+								<div class="clock">
+									<div class="clock-face">
+										<div class="hand hour-hand" id="hour-istanbul"></div>
+										<div class="hand min-hand" id="min-istanbul"></div>
+										<div class="hand sec-hand" id="second-istanbul"></div>
+									</div>
+								</div>
+							</div>
+	
+							<div class="mt-4 mx-2 displayCock" id="lahore-clock">
+								<div class="text-center">
+									<h4 class="my-3">Lahore, Pakistan</h4>
+								</div>
+								<div class="clock">
+									<div class="clock-face">
+										<div class="hand hour-hand" id="hour-lahore"></div>
+										<div class="hand min-hand" id="min-lahore"></div>
+										<div class="hand sec-hand" id="second-lahore"></div>
+									</div>
+								</div>
+							</div>
+	
+							<div class="mt-4 mx-2 displayCock" id="london-clock">
+								<div class="text-center">
+									<h4 class="my-3">London, England</h4>
+								</div>
+								<div class="clock">
+									<div class="clock-face">
+										<div class="hand hour-hand" id="hour-london"></div>
+										<div class="hand min-hand" id="min-london"></div>
+										<div class="hand sec-hand" id="second-london"></div>
+									</div>
+								</div>
+							</div>
+							
+							<div class="mt-4 mx-2 displayCock" id="reykjavik-clock">
+								<div class="text-center">
+									<h4 class="my-3">Reykjavik, Iceland</h4>
+								</div>
+								<div class="clock">
+									<div class="clock-face">
+										<div class="hand hour-hand" id="hour-reykjavik"></div>
+										<div class="hand min-hand" id="min-reykjavik"></div>
+										<div class="hand sec-hand" id="second-reykjavik"></div>
+									</div>
+								</div>
+							</div>
+							
+							<div class="mt-4 mx-2 displayCock" id="toronto-clock">
+								<div class="text-center">
+									<h4 class="my-3">Toronto, Canada</h4>
+								</div>
+								<div class="clock">
+									<div class="clock-face">
+										<div class="hand hour-hand" id="hour-toronto"></div>
+										<div class="hand min-hand" id="min-toronto"></div>
+										<div class="hand sec-hand" id="second-toronto"></div>
+									</div>
+								</div>
+							</div>
+	
+							<div class="mt-4 mx-2 displayCock" id="vancouver-clock">
+								<div class="text-center">
+									<h4 class="my-3">Vancouver, Canada</h4>
+								</div>
+								<div class="clock">
+									<div class="clock-face">
+										<div class="hand hour-hand" id="hour-vancouver"></div>
+										<div class="hand min-hand" id="min-vancouver"></div>
+										<div class="hand sec-hand" id="second-vancouver"></div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					  
+
+
+
+				  </div> 
+				</div>
+			</div>
+			
+		</section>
+		
+	</main>
+	<footer class="bg-light">
+		<div>
+			<div class="navbar navbar-light container d-flex justify-content-center align-items-center flex-column">
+			  <div class="text-center">
+				<a class="navbar-brand  m-0" href="#">World Clock</a>
+				<a class="navbar-brand d-block m-0" href="#">
+				  <i class=""><svg class="bi bi-clock-history" width="2rem" height="2rem" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+					  <path fill-rule="evenodd" d="M8.515 1.019A7 7 0 0 0 8 1V0a8 8 0 0 1 .589.022l-.074.997zm2.004.45a7.003 7.003 0 0 0-.985-.299l.219-.976c.383.086.76.2 1.126.342l-.36.933zm1.37.71a7.01 7.01 0 0 0-.439-.27l.493-.87a8.025 8.025 0 0 1 .979.654l-.615.789a6.996 6.996 0 0 0-.418-.302zm1.834 1.79a6.99 6.99 0 0 0-.653-.796l.724-.69c.27.285.52.59.747.91l-.818.576zm.744 1.352a7.08 7.08 0 0 0-.214-.468l.893-.45a7.976 7.976 0 0 1 .45 1.088l-.95.313a7.023 7.023 0 0 0-.179-.483zm.53 2.507a6.991 6.991 0 0 0-.1-1.025l.985-.17c.067.386.106.778.116 1.17l-1 .025zm-.131 1.538c.033-.17.06-.339.081-.51l.993.123a7.957 7.957 0 0 1-.23 1.155l-.964-.267c.046-.165.086-.332.12-.501zm-.952 2.379c.184-.29.346-.594.486-.908l.914.405c-.16.36-.345.706-.555 1.038l-.845-.535zm-.964 1.205c.122-.122.239-.248.35-.378l.758.653a8.073 8.073 0 0 1-.401.432l-.707-.707z"/>
+					  <path fill-rule="evenodd" d="M8 1a7 7 0 1 0 4.95 11.95l.707.707A8.001 8.001 0 1 1 8 0v1z"/>
+					  <path fill-rule="evenodd" d="M7.5 3a.5.5 0 0 1 .5.5v5.21l3.248 1.856a.5.5 0 0 1-.496.868l-3.5-2A.5.5 0 0 1 7 9V3.5a.5.5 0 0 1 .5-.5z"/>
+					</svg>
+				  </i>
+				</a>
+				<p>© 2020 World Clock<br>"Designed & Developed by <a class="text-decoration-none " href="https://narotamji.github.io/io/">Narotam Singh</a></a>"</p>
+			  </div>
+			</div>
+		</div>
+	</footer>
+  
+	<script src="time.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+  </body>
+</html>
