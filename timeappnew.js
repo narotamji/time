@@ -5,19 +5,19 @@ function gridViewsFunc() {
     document.getElementById("gridView").style.display = "block";
   }
   
-  function listViewsFunc() {
+function listViewsFunc() {
     document.getElementById("listView").style.display = "block";
     document.getElementById("gridView").style.display = "none";
     document.getElementById("clockView").style.display = "none";
   }
   
-  function clockViewsFunc() {
+function clockViewsFunc() {
     document.getElementById("listView").style.display = "none";
     document.getElementById("gridView").style.display = "none";
     document.getElementById("clockView").style.display = "block";
   }
   
-  // timeCalculation
+// timeCalculation
   function addZero(i) {
     if (i < 10) {
       i = "0" + i;
@@ -25,6 +25,7 @@ function gridViewsFunc() {
     return i;
   }
   
+// adding zero
   var a;
   var time;
   
@@ -39,11 +40,11 @@ function gridViewsFunc() {
     document.getElementById("clock").innerHTML = time;
   });
   
-  // otherCountries
+// otherCountries
   var c;
   var hr;
   var mnt;
-//   var month;
+  //   var month;
   
   setInterval(() => {
     c = new Date();
@@ -96,7 +97,6 @@ function gridViewsFunc() {
         // }
 
       setInterval(() => {
-        
         if (hr < diffInHours && mnt < diffInMinutes) {  
           h = 23 - diffInHours;
           m = diffInMinutes; 
@@ -116,7 +116,6 @@ function gridViewsFunc() {
         } else if (hr === diffInHours && mnt < diffInMinutes) {  
             h = 23 - diffInHours;
         }
-
         displayTimeOnScreen(h, m, countryCode);
         return h, m;
       });
@@ -130,11 +129,3 @@ function gridViewsFunc() {
   diffrentTimeZones("reykjavik", 5, 30);
   diffrentTimeZones("toronto", 10, 30);
   diffrentTimeZones("vancouver", 13, 30);
-
-
-
-
-
-
-
-
