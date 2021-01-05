@@ -107,7 +107,7 @@ function gridViewsFunc() {
       });
   }
 
-  diffrentTimeZones("abuDhabi", 2, 23, -2, -1, 30, -30, 1, 30);
+  diffrentTimeZones("abuDhabi", 22, 23, -2, -1, 30, -30, 1, 30);
   diffrentTimeZones("berlin", 19, 20, -5, -4, 30, -30, 4, 30);
   diffrentTimeZones("istanbul", 21, 22, -3, -2, 30, -30, 2, 30);
   diffrentTimeZones("lahore",0,0,-1,0,30,-30,0,30);
