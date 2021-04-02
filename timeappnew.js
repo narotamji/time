@@ -84,17 +84,6 @@ function clockViewsFunc() {
   }
 
   function diffrentTimeZones(countryCode, diffInHours, diffInMinutes) {
-    
-        // if(countryCode === "berlin" || countryCode === "london" || countryCode === "reykjavik" || countryCode === "toronto" || countryCode === "vancouver") {
-        //     if(month >= 2 && month <=10  ) {
-        //         cHour1 ++;
-        //         cHour2 ++;
-        //         cHourNegative1 ++;
-        //         cHourNegative2 ++;
-        //         diffInHours --;
-        //     }
-        //     console.log(month);
-        // }
 
       setInterval(() => {
         if (hr < diffInHours && mnt < diffInMinutes) {  
@@ -122,10 +111,10 @@ function clockViewsFunc() {
   }
 
   diffrentTimeZones("abuDhabi", 1, 30);
-  diffrentTimeZones("berlin", 4, 30);
+  diffrentTimeZones("berlin", 3, 30);
   diffrentTimeZones("istanbul", 2, 30);
   diffrentTimeZones("lahore", 0,30);
-  diffrentTimeZones("london", 5, 30);
-  diffrentTimeZones("reykjavik", 5, 30);
-  diffrentTimeZones("toronto", 10, 30);
-  diffrentTimeZones("vancouver", 13, 30);
+  diffrentTimeZones("london", 4, 30);
+  diffrentTimeZones("reykjavik", 4, 30);
+  diffrentTimeZones("toronto", 9, 30);
+  diffrentTimeZones("vancouver", 12, 30);
